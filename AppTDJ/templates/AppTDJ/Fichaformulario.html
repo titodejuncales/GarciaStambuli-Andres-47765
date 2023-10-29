@@ -1,0 +1,30 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">FICHAS Y MEDALLAS</h1>
+{% if fichaymedalla.tipodeobjeto %}
+<p class="lead fw-normal text-white-50 mb-4">Actualiza la información de tu objeto</p>
+{% else %}
+<p class="lead fw-normal text-white-50 mb-4">Agrega un nuevo objeto</p>
+{% endif %}
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://as01.epimg.net/juegos_olimpicos/imagenes/2021/07/11/noticias/1626030349_794414_1626188000_noticia_normal_recorte1.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+<form action="" method="POST" enctype="multipart/form-data"> {%  csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary" value="Guardar">
+    <a class="btn btn-primary" href="{% url 'fichaLista' %}">Cancelar</a>
+
+</form>
+
+{% endblock %}

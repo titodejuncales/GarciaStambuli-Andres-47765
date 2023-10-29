@@ -1,0 +1,30 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">BILLETES</h1>
+<p class="lead fw-normal text-white-50 mb-4">Eliminar billetes</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://ichef.bbci.co.uk/news/800/cpsprodpb/7432/production/_91464792_mediaitem91464791.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <p> ¿Estás seguro de borrar este hermoso billete de {{object.pais}}?</p>
+    
+    <button class="btn btn-primary" type="submit">Eliminar</button>
+    <a class="btn btn-primary" href="{% url 'billeteLista' %}">Ni loco</a>
+</form>
+
+{% endblock %}
+
+
+    

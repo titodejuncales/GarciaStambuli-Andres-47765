@@ -1,0 +1,27 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">FICHAS Y MEDALLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Eliminar objeto</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://as01.epimg.net/juegos_olimpicos/imagenes/2021/07/11/noticias/1626030349_794414_1626188000_noticia_normal_recorte1.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <p> ¿Estás seguro de borrar este hermosa {{object.tipodeobjeto}}?</p>
+    
+    <button class="btn btn-primary" type="submit">Eliminar</button>
+    <a class="btn btn-primary" href="{% url 'fichaLista' %}">Ni loco</a>
+</form>
+
+{% endblock %}

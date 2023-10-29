@@ -1,0 +1,29 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+{% if estampilla.pais %}
+<p class="lead fw-normal text-white-50 mb-4">Actualiza la información de tu estampilla</p>
+{% else %}
+<p class="lead fw-normal text-white-50 mb-4">Agrega una nueva estampilla</p>
+{% endif %}
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://cdn.aarp.net/content/dam/aarp/money/budgeting_savings/2021/06/1140-postage-stamp-hero-esp.imgcache.rev.web.700.403.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+<form action="" method="POST" enctype="multipart/form-data"> {%  csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary" value="Guardar">
+    <a class="btn btn-primary" href="{% url 'estampillaLista' %}">Cancelar</a>
+</form>
+
+{% endblock %}

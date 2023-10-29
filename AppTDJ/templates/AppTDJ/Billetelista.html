@@ -1,0 +1,32 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">BILLETES</h1>
+<p class="lead fw-normal text-white-50 mb-4">Listado de billetes</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://ichef.bbci.co.uk/news/800/cpsprodpb/7432/production/_91464792_mediaitem91464791.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if object_list %}
+{% for billete in object_list %}
+<p> País: {{billete.pais}} / Valor: {{billete.valor}} / Año: {{billete.year}}</p>
+<a href='{% url "billeteDetalle" billete.id %}' class="btn btn-primary"> Ver detalle </a>
+<a href='{% url "billeteActualizar" billete.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "billeteEliminar" billete.id %}' class="btn btn-primary"> Eliminar </a>
+<p></p>
+{% endfor %}
+{% else %}
+<p>No hay billetes registrados</p>
+{% endif %}
+
+{% endblock %}

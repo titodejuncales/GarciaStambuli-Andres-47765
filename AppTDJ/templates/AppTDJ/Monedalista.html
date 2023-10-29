@@ -1,0 +1,36 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">MONEDAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Listado de monedas</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://www.show.com.es/u/fotografias/fotosnoticias/2023/7/3/135279.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if object_list %}
+{% for moneda in object_list %}
+<p> País: {{moneda.pais}} / Valor: {{moneda.valor}} / Año: {{moneda.year}}</p>
+<a href='{% url "monedaDetalle" moneda.id %}' class="btn btn-primary" > Ver detalle </a>
+<a href='{% url "monedaActualizar" moneda.id %}' class="btn btn-primary" > Actualizar </a>
+<a href='{% url "monedaEliminar" moneda.id %}' class="btn btn-primary"  > Eliminar </a>
+<p></p>
+{% endfor %}
+{% else %}
+<p>No hay monedas registradas<p>
+{% endif %}
+
+{% endblock %}
+
+
+
+

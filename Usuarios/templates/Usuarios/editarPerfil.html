@@ -1,0 +1,29 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">EL baúl de Tito</h1>
+<p class="lead fw-normal text-white-50 mb-4">Edita tu usuario</p>
+
+{% endblock %}
+
+{% block imagen %}
+"https://services.meteored.com/img/article/el-globo-terraqueo-mas-antiguo-que-revela-una-america-en-descubrimiento-1694617893131_1024.jpeg"
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+
+    <button class="btn btn-primary btn-lg px-4 me-sm-3" type="submit"> Confirmar edición</button>
+    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'AgregarAvatar' %}">Agregar avatar</a>
+
+
+</form>
+
+{% endblock %}

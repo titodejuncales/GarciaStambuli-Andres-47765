@@ -1,0 +1,34 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Esta es tu colección de estampillas</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://www.show.com.es/u/fotografias/fotosnoticias/2023/7/3/135279.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if estampillas %}
+{% for estampilla in estampillas %}
+<p> País: {{estampilla.pais}} / Valor: {{estampilla.valor}}</p>
+<a href='{% url "estampillaDetalle" estampilla.id %}' class="btn btn-primary" > Ver detalle </a>
+<a href='{% url "estampillaActualizar" estampilla.id %}' class="btn btn-primary" > Actualizar </a>
+<a href='{% url "estampillaEliminar" estampilla.id %}' class="btn btn-primary"  > Eliminar </a>
+<p></p>
+{% endfor %}
+{% else %}
+<p>Aún no tienes estampillas en tu colección<p>
+{% endif %}
+
+{% endblock %}
+
+

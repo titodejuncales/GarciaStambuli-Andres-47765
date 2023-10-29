@@ -1,0 +1,27 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">MONEDA</h1>
+<p class="lead fw-normal text-white-50 mb-4">Eliminar monedas</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://www.show.com.es/u/fotografias/fotosnoticias/2023/7/3/135279.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <p> ¿Estás seguro de borrar esta hermosa moneda de {{object.pais}}?</p>
+    
+    <button class="btn btn-primary" type="submit">Eliminar</button>
+    <a class="btn btn-primary" href="{% url 'monedaLista' %}">Ni loco</a>
+</form>
+
+{% endblock %}

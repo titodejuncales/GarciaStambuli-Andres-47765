@@ -1,0 +1,27 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Eliminar estampilla</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://cdn.aarp.net/content/dam/aarp/money/budgeting_savings/2021/06/1140-postage-stamp-hero-esp.imgcache.rev.web.700.403.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <p> ¿Estás seguro de borrar esta hermosa estampilla de {{object.pais}}?</p>
+    
+    <button class="btn btn-primary" type="submit">Eliminar</button>
+    <a class="btn btn-primary" href="{% url 'estampillaLista' %}">Ni loco</a>
+</form>
+
+{% endblock %}

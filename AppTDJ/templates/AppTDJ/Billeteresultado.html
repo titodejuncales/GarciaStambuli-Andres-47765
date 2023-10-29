@@ -1,0 +1,36 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">BILLETES</h1>
+<p class="lead fw-normal text-white-50 mb-4">Resultado de búsqueda de billetes</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://ichef.bbci.co.uk/news/800/cpsprodpb/7432/production/_91464792_mediaitem91464791.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if billetes %}
+
+{% for billete in billetes %}
+
+<p> Pais: {{billete.pais}} / Año: {{billete.year}} / Valor: {{billete.valor}} </p>
+<a class="btn btn-primary" href="{% url "billeteActualizar" billete.id %}">Actualizar</a>
+<a class="btn btn-primary" href="{% url "billeteEliminar" billete.id %}">Cancelar</a>
+
+{% endfor %}
+
+{% else %}
+
+<p> No existen billetes de {{billete}} en nuestra plataforma </p>
+
+{% endif %}
+
+{% endblock %}

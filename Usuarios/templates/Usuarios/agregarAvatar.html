@@ -1,0 +1,29 @@
+{%  extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">EL baúl de Tito</h1>
+<p class="lead fw-normal text-white-50 mb-4">Agrega tu ávatar</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT86V_J1r7jZyMTylpaEYQh89A8fgt6v_IcmOWN0sAq98OXUbjgSmRscS6EjFnDHbO1oJQ&usqp=CAU"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+{{form.as_p}}
+
+<button type="submit" class="btn btn-primary">Agregar imagen</button>
+<a  class="btn btn-primary" href="{% url 'Inicio' %}">Cancelar</a>
+
+</form>
+
+{% endblock %}

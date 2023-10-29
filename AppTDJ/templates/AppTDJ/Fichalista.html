@@ -1,0 +1,32 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">FICHAS Y MEDALLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Listado de fichas y medallas</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://as01.epimg.net/juegos_olimpicos/imagenes/2021/07/11/noticias/1626030349_794414_1626188000_noticia_normal_recorte1.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if object_list %}
+{% for fichaymedalla in object_list %}
+<p> Tipo de objeto: {{fichaymedalla.tipodeobjeto}} {% if fichaymedalla.pais %}/ País: {{fichaymedalla.pais}}{% endif %} {% if fichaymedalla.year %}/ Año: {{fichaymedalla.year}}{% endif %}</p>
+<a href='{% url "fichaDetalle" fichaymedalla.id %}' class="btn btn-primary"> Ver detalle </a>
+<a href='{% url "fichaActualizar" fichaymedalla.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "fichaEliminar" fichaymedalla.id %}' class="btn btn-primary"> Eliminar </a>
+<p></p>
+{% endfor %}
+{% else %}
+<p>No hay fichas y medallas registradas</p>
+{% endif %}
+
+{% endblock %}

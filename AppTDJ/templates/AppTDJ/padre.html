@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>El baúl de Tito</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'AppTDJ/assets/captura.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppTDJ/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="{% url 'Inicio' %}">El baúl de Tito</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            {% if user.is_authenticated %}
+                                <a class="btn btn-primary" href="{% url 'Logout' %}">Cerrar sesión</a>
+                                <a class="btn btn-primary" href="{% url 'EditarUsuario' %}">Editar Usuario</a>
+                                <p style="color: white;">Hola {{user.username}}</p>
+                                {% with user.avatar_set.first as AVATAR %} 
+                                {% if AVATAR %}
+                                <a href="{% url 'AgregarAvatar' %}">
+                                    <img height='70px' src="{{AVATAR.imagen.url}}" alt="" style="max-width: 70 px;" >
+                                </a>                                
+                                {% endif %}
+                                {% endwith %} 
+                            {% else %}
+                            <a class="btn btn-primary" href="{% url 'Login' %}">Iniciar sesión</a>
+                            <a class="btn btn-primary" href="{% url 'Registro' %}">Crear usuario</a>
+                            {% endif %}
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownNac" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Monedas</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNac">
+                                    <li><a class="dropdown-item" href="{% url 'monedaLista' %}">Ver todas</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'monedaCrear' %}">Agregar nueva</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'monedaBuscar' %}">Buscar</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'monedaMilista' %}">Mi colección</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownInt" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Billetes</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownInt">
+                                    <li><a class="dropdown-item" href="{% url 'billeteLista' %}">Ver todos</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'billeteCrear' %}">Agregar nuevo</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'billeteBuscar' %}">Buscar</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'billeteMilista' %}">Mi colección</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownSel" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Estampillas</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSel">
+                                    <li><a class="dropdown-item" href="{% url 'estampillaLista' %}">Ver todas</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'estampillaCrear' %}">Agregar nueva</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'estampillaBuscar' %}">Buscar</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'estampillaMilista' %}">Mi colección</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownSel" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fichas y medallas</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSel">
+                                    <li><a class="dropdown-item" href="{% url 'fichaLista' %}">Ver todas</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'fichaCrear' %}">Agregar nueva</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'fichaBuscar' %}">Buscar</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'fichaMilista' %}">Mi colección</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Header-->
+            <header class="masthead" style="background-image: url('{% static "AppTDJ/assets/img/baul-cuero-antiguo2.jpg"%}')">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                {% block titulo %}
+
+                                {% endblock%}
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                            <img class="img-fluid rounded-3 my-5" src= {% block imagen %} {% endblock %} alt="..." />
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {% block descripcion %}
+
+            {% endblock %}
+
+
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="{% url 'Sobremi' %}">Sobre mí</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="{% url 'Contacto' %}">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'AppTDJ/js/scripts.js' %}"></script>
+    </body>
+</html>

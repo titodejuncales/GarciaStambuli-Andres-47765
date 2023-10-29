@@ -1,0 +1,42 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">MONEDAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Este es el detalle de tu moneda</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://www.show.com.es/u/fotografias/fotosnoticias/2023/7/3/135279.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<p> Valor: {{moneda.valor}}</p>
+<p> País: {{moneda.pais}}</p>
+<p> Continente: {% if moneda.continente %}
+                    {{moneda.continente}}
+                    {% endif %}</p>
+
+<p> Año: {{moneda.year}}</p>
+<p> Forma: {{moneda.forma}}</p>
+<p> Material: {{moneda.material}}</p>
+<p> Descripcion: {% if moneda.descripcion %}
+                 {{moneda.descripcion}}
+                 {% endif %}</p>
+<p> Imagen frente: {% if moneda.imgfrente %}
+    <img src="{{ moneda.imgfrente.url }}" >
+                {% endif %}</p>
+
+<p> Imagen dorso:  {% if moneda.imgdorso %}
+    <img src="{{ moneda.imgdorso.url }}" ></p>
+    {% endif %}</p>
+
+<a href='{% url "monedaActualizar" moneda.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "monedaEliminar" moneda.id %}' class="btn btn-primary"> Eliminar </a>
+<a href='{% url "monedaLista" %}' class="btn btn-primary"> Volver </a>
+{% endblock %}

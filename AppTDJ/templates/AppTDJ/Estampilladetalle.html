@@ -1,0 +1,38 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Este es el detalle de tu estampilla</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://cdn.aarp.net/content/dam/aarp/money/budgeting_savings/2021/06/1140-postage-stamp-hero-esp.imgcache.rev.web.700.403.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<p> Valor: {{estampilla.valor}}</p>
+<p> País: {{estampilla.pais}}</p>
+<p> Año: {% if estampilla.year %}
+            {{estampilla.year}}
+            {% endif %}</p>       
+<p> Forma: {% if estampilla.forma %}
+                  {{estampilla.forma}}
+                  {% endif %}</p>
+<p> Descripción: {% if estampilla.descripcion %}
+    {{estampilla.descripcion}}
+    {% endif %}</p>
+<p> Imagen: {% if estampilla.imgfrente %}
+        <img src="{{ estampilla.imgfrente.url }}" >
+       {% endif %}</p>
+
+<a href='{% url "estampillaActualizar" estampilla.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "estampillaEliminar" estampilla.id %}' class="btn btn-primary"> Eliminar </a>
+<a href='{% url "estampillaLista" %}' class="btn btn-primary"> Volver </a>
+
+{% endblock %}

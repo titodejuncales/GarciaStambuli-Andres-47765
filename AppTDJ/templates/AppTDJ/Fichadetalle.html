@@ -1,0 +1,46 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">FICHAS Y MEDALLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Este es el detalle de tu objeto</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://as01.epimg.net/juegos_olimpicos/imagenes/2021/07/11/noticias/1626030349_794414_1626188000_noticia_normal_recorte1.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<p> Tipo de objeto: {{fichaymedalla.tipodeobjeto}}</p>
+<p> Valor: {% if fichaymedalla.valor %}
+                {{fichaymedalla.valor}}
+                {% endif %}</p>
+<p> País: {% if fichaymedalla.pais %}
+                {{fichaymedalla.pais}}
+                {% endif %}</p>
+<p> Año: {% if fichaymedalla.year %}
+            {{fichaymedalla.year}}
+            {% endif %}</p>
+<p> Forma: {% if fichaymedalla.forma %}
+                  {{fichaymedalla.forma}}
+                  {% endif %}</p>
+<p> Descripción: {% if fichaymedalla.descripcion %}
+    {{fichaymedalla.descripcion}}
+    {% endif %}</p>
+<p> Imagen frente: {% if fichaymedalla.imgfrente %}
+        <img src="{{ fichaymedalla.imgfrente.url }}" >
+       {% endif %}</p>
+<p> Imagen dorso:  {% if fichaymedalla.imgdorso %}
+          <img src="{{ fichaymedalla.imgdorso.url }}" ></p>
+           {% endif %}</p>
+
+<a href='{% url "fichaActualizar" fichaymedalla.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "fichaEliminar" fichaymedalla.id %}' class="btn btn-primary"> Eliminar </a>
+<a href='{% url "fichaLista" %}' class="btn btn-primary"> Volver </a>
+
+{% endblock %}

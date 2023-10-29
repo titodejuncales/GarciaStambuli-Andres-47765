@@ -1,0 +1,29 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">BILLETES</h1>
+{% if billete.pais %}
+<p class="lead fw-normal text-white-50 mb-4">Actualiza la información de tu billete</p>
+{% else %}
+<p class="lead fw-normal text-white-50 mb-4">Agrega un nuevo billete</p>
+{% endif %}
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://ichef.bbci.co.uk/news/800/cpsprodpb/7432/production/_91464792_mediaitem91464791.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+<form action="" method="POST" enctype="multipart/form-data"> {%  csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary" value="Guardar">
+    <a class="btn btn-primary" href="{% url 'billeteLista' %}">Cancelar</a>
+</form>
+
+{% endblock %}

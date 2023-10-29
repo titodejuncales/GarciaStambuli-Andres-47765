@@ -1,0 +1,32 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Listado de estampillas</p>
+
+{% endblock %}
+
+{% block imagen %}
+
+"https://cdn.aarp.net/content/dam/aarp/money/budgeting_savings/2021/06/1140-postage-stamp-hero-esp.imgcache.rev.web.700.403.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% if object_list %}
+{% for estampilla in object_list %}
+<p> País: {{estampilla.pais}} / Valor: {{estampilla.valor}}</p>
+<a href='{% url "estampillaDetalle" estampilla.id %}' class="btn btn-primary"> Ver detalle </a>
+<a href='{% url "estampillaActualizar" estampilla.id %}' class="btn btn-primary"> Actualizar </a>
+<a href='{% url "estampillaEliminar" estampilla.id %}' class="btn btn-primary"> Eliminar </a>
+<p></p>
+{% endfor %}
+{% else %}
+<p>No hay estampillas registradas</p>
+{% endif %}
+
+{% endblock %}

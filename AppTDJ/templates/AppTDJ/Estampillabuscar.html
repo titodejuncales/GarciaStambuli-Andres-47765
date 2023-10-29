@@ -1,0 +1,24 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">ESTAMPILLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Busca tus estampillas por país</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://cdn.aarp.net/content/dam/aarp/money/budgeting_savings/2021/06/1140-postage-stamp-hero-esp.imgcache.rev.web.700.403.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="/AppTDJ/estampillas/resultado/" method="GET">
+    <label for="pais" class="mr-2">País:</label>
+    <input type="text" name="pais" id="pais">
+    <input type="submit" class="btn btn-primary" value="Buscar">
+</form>
+
+{% endblock %}

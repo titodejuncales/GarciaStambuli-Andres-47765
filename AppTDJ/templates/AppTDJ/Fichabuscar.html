@@ -1,0 +1,24 @@
+{% extends "AppTDJ/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">FICHAS Y MEDALLAS</h1>
+<p class="lead fw-normal text-white-50 mb-4">Busca fichas y medallas por tipo de objeto</p>
+{% endblock %}
+
+{% block imagen %}
+
+"https://as01.epimg.net/juegos_olimpicos/imagenes/2021/07/11/noticias/1626030349_794414_1626188000_noticia_normal_recorte1.jpg"
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action="/AppTDJ/fichasymedallas/resultado/" method="GET">
+    <label for="tipodeobjeto" class="mr-2">Tipo de objeto:</label>
+    <input type="text" name="tipodeobjeto" id="tipodeobjeto">
+    <input type="submit" class="btn btn-primary" value="Buscar">
+</form>
+
+{% endblock %}
